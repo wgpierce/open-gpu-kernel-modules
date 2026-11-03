@@ -2020,6 +2020,11 @@ _gmmuWalkCBMapNextEntries_RmAperture
         transferFlags |= TRANSFER_FLAGS_FLUSH_CPU_CACHE_WAR_BUG4686457;
     }
 
+    if (pUserCtx->pGVAS != pGVAS_FLA)
+    {
+        transferFlags |= TRANSFER_FLAGS_DEFER_FLUSH;
+    }
+  
     surf.pMemDesc = pMemDesc;
     surf.offset = entryIndexLo * pLevelFmt->entrySize;
 
